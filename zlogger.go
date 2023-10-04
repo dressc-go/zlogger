@@ -5,9 +5,8 @@
 package zlogger
 
 import (
-	"os"
-
 	"github.com/rs/zerolog"
+	"os"
 )
 
 const (
@@ -23,10 +22,10 @@ func SetGlobalLevel(level zerolog.Level) {
 
 // Initialize a logger, component_name will be included in the
 // logger (as will be a timestamp)
-func GetLogger(component_name string) zerolog.Logger {
+func GetLogger(component string) zerolog.Logger {
 	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
 	logger := zerolog.New(os.Stderr).With().
-		Str("component", component_name).
+		Str("component", component).
 		Timestamp().
 		Logger()
 	return logger
